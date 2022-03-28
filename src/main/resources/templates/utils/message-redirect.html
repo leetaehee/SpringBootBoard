@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="board/fragments/header :: main-head"></head>
+	<body>
+		<form th:if="${not #maps.isEmpty( params )}" name="dateForm" th:action="${redirectUri}" th:method="${method}" style="display: none;">
+			<input th:each="key, status : ${params.keySet()}" type="hidden" th:name="${key}" th:value="${params.get(key)}" />
+		</form>
+		
+		<th:block layout:fragment="script">
+			<script th:inline="javascript">
+				/* <![CDATA[ */
+					
+					window.onload = function() {
+						var message = /*[[ ${message} ]]*/;
+						if (message != null && message != "") {
+							alert(message);
+						}
+						
+						var params =  /*[[ ${params} ]]*/;
+						if (params != null && params != "") {
+							document.dateForm.submit();
+						} else {
+							var redirectUri = /*[[ ${redirectUri} ]]*/;
+							location.href = redirectUri;
+						}
+					}
+				/* ]]> */	
+			</script>
+		</th:block>
+	</body>
+</html>
