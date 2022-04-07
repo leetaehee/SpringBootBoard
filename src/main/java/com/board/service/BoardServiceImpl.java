@@ -58,9 +58,6 @@ public class BoardServiceImpl implements BoardService {
 
 		params.setPaginationInfo(paginationInfo);
 
-		System.out.println("page info => ");
-		System.out.println(paginationInfo);
-
 		if (boardTotalCount > 0) {
 			boardList = boardMapper.selectBoardList(params);
 		}
