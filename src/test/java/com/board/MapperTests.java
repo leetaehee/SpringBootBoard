@@ -92,6 +92,7 @@ public class MapperTests {
 	
 	@Test
 	public void testSelectList() {
+		/*
 		int boardTotalCount = boardMapper.selectBoardTotalCount();
 		if (boardTotalCount > 0) {
 			List<BoardDTO> boardList = boardMapper.selectBoardList();
@@ -105,5 +106,6 @@ public class MapperTests {
 				}
 			}
 		}
+		 */
 	}
 }

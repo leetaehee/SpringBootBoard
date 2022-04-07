@@ -1,7 +1,5 @@
 package com.board.domain;
 
-import java.time.LocalDateTime;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class BoardDTO {
+public class BoardDTO extends CommonDTO{
 	/** 번호 (PK) */
 	private long idx;
 	
@@ -30,16 +28,4 @@ public class BoardDTO {
 	
 	/** 비밀 여부 */
 	private String secretYn;
-	
-	/** 삭제 여부 */
-	private String deleteYn;
-	
-	/** 등록일 */
-	private LocalDateTime insertTime;
-	
-	/** 수정일 */
-	private LocalDateTime updateTime;
-	
-	/** 삭제일 */
-	private LocalDateTime deleteTime;
 }

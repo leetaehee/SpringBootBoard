@@ -3,6 +3,7 @@ package com.board.service;
 import java.util.Collections;
 import java.util.List;
 
+import com.board.paging.PaginationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,13 +48,21 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override 
-	public List<BoardDTO> getBoardList() {
+	public List<BoardDTO> getBoardList(BoardDTO params) {
 		List<BoardDTO> boardList = Collections.emptyList();
 		
-		int boardTotalCount = boardMapper.selectBoardTotalCount();
-		
+		int boardTotalCount = boardMapper.selectBoardTotalCount(params);
+
+		PaginationInfo paginationInfo = new PaginationInfo(params);
+		paginationInfo.setTotalRecordCount(boardTotalCount);
+
+		params.setPaginationInfo(paginationInfo);
+
+		System.out.println("page info => ");
+		System.out.println(paginationInfo);
+
 		if (boardTotalCount > 0) {
-			boardList = boardMapper.selectBoardList();
+			boardList = boardMapper.selectBoardList(params);
 		}
 		
 		return boardList;
